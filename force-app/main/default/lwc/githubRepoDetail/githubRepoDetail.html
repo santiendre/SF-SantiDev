@@ -1,0 +1,16 @@
+<template>
+    <template lwc:if={repo}>
+        <div class="slds-p-around_medium">
+            <h2 class="slds-text-heading_medium">{repo.name}</h2>
+            <p><strong>Owner:</strong> {repo.owner}</p>
+            <p><strong>Description:</strong> {repo.description}</p>
+            <p><strong>Stars:</strong> {repo.stars}</p>
+            <lightning-formatted-url value={repo.url} label="View on GitHub" target="_blank"></lightning-formatted-url>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="slds-p-around_medium">
+            <p class="slds-text-color_weak">Select a repository to see details.</p>
+        </div>
+    </template>
+</template>

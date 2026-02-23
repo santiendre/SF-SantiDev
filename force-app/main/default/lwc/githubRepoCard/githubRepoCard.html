@@ -1,0 +1,11 @@
+<template>
+  <lightning-card title={repo.name}>
+      <div class="slds-p-around_medium">
+          <p><strong>Owner:</strong> {repo.owner}</p>
+          <p><strong>Description:</strong> {repo.description}</p>
+          <p><strong>Stars:</strong> {repo.stars}</p>
+          <lightning-button label="View Details" onclick={handleSelect}></lightning-button>
+          <lightning-button label="Save Favorite" onclick={handleFavorite}></lightning-button>
+      </div>
+  </lightning-card>
+</template>

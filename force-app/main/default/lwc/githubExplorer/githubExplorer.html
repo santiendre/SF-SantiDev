@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="GitHub Explorer">
+        <div class="slds-p-around_medium">
+            <c-github-search-bar onsearch={handleSearch}></c-github-search-bar>
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <template lwc:if={repos}>
+                <c-github-repo-list 
+                    repos={repos}
+                    onreposelect={handleRepoSelect}
+                    onrepofavorite={handleRepoFavorite}>
+                </c-github-repo-list>
+            </template>
+            <c-github-repo-detail repo={selectedRepo}></c-github-repo-detail>
+        </div>
+    </lightning-card>
+</template>
