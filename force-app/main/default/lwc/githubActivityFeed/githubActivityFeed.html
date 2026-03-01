@@ -1,0 +1,19 @@
+<template>
+  <lightning-card title="Activity Feed">
+    <div class="slds-p-around_medium">
+      <template lwc:if={hasActivities}>
+        <template for:each={activities} for:item="activity">
+          <div key={activity.id} class="slds-box slds-box_x-small slds-m-bottom_small">
+            <div class="slds-grid slds-grid_align-spread">
+              <span><strong>{activity.action}:</strong> {activity.value}</span>
+              <span class="slds-text-color_weak">{activity.time}</span>
+            </div>
+          </div>
+        </template>
+      </template>
+      <template lwc:else>
+          <p class="slds-text-color_weak">No activities yet.</p>
+      </template>
+  </div>
+  </lightning-card>
+</template>

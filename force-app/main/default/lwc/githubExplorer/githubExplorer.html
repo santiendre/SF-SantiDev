@@ -1,18 +1,40 @@
 <template>
+    <template lwc:if={hasFavorites}>
+        <lightning-card title="Favorites">
+            <template lwc:if={isLoadingFavorites}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <div class="slds-p-around_medium">
+                <lightning-datatable
+                key-field="name"
+                data={favorites}
+                columns={columns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}
+                ></lightning-datatable>
+            </div>
+        </lightning-card>
+    </template>
     <lightning-card title="GitHub Explorer">
         <div class="slds-p-around_medium">
             <c-github-search-bar onsearch={handleSearch}></c-github-search-bar>
             <template lwc:if={isLoading}>
                 <lightning-spinner alternative-text="Loading"></lightning-spinner>
             </template>
-            <template lwc:if={repos}>
+            <template lwc:if={selectedRepo}>
+                <c-github-repo-detail 
+                    repo={selectedRepo}
+                    ongoback={handleDetailsGoBack}
+                    onsavefavorite={handleRepoFavorite}>
+                </c-github-repo-detail>
+            </template>
+            <template lwc:elseif={repos}>
                 <c-github-repo-list 
                     repos={repos}
                     onreposelect={handleRepoSelect}
                     onrepofavorite={handleRepoFavorite}>
                 </c-github-repo-list>
             </template>
-            <c-github-repo-detail repo={selectedRepo}></c-github-repo-detail>
         </div>
     </lightning-card>
 </template>
