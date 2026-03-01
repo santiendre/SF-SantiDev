@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-grid slds-grid_align-spread slds-p-around_small slds-box slds-box_x-small slds-m-top_small">
+        <div class="slds-col slds-align-middle">
+            <span>{repo.name}</span>
+            <span class="slds-m-left_small slds-text-color_weak">by {repo.owner}</span>
+        </div>
+        <div class="slds-col slds-no-flex">
+            <lightning-button label="View Details" onclick={handleSelect} class="slds-m-right_x-small"></lightning-button>
+            <lightning-button label="Save Favorite" onclick={handleFavorite}></lightning-button>
+        </div>
+    </div>
+</template>

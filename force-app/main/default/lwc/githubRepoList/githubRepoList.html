@@ -1,0 +1,10 @@
+<template>
+    <template for:each={repos} for:item="repo">
+        <c-github-repo-card 
+            key={repo.name}
+            repo={repo}
+            onreposelect={handleRepoSelect}
+            onrepofavorite={handleRepoFavorite}>
+        </c-github-repo-card>
+    </template>
+</template>

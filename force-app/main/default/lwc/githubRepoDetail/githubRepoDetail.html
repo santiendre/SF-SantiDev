@@ -1,0 +1,41 @@
+<template>
+    <template lwc:if={repo}>
+        <div class="slds-box slds-p-around_medium">
+            <div class="slds-media slds-media_center slds-m-bottom_medium">
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading_large slds-m-bottom_x-small">{repo.name}</h2>
+                    <p class="slds-text-color_weak slds-m-bottom_x-small">by {repo.owner}</p>
+                </div>
+            </div>
+
+            <div class="slds-m-bottom_small">
+                <p class="slds-m-bottom_x-small">{repo.description}</p>
+                <p class="slds-m-bottom_x-small">
+                    <strong>⭐ Stars:</strong> {repo.stars}
+                </p>
+                <lightning-formatted-url 
+                    value={repo.url} 
+                    label="View on GitHub" 
+                    target="_blank">
+                </lightning-formatted-url>
+            </div>
+
+            <div class="slds-border_top slds-p-top_small slds-grid slds-grid_align-spread">
+                <lightning-button 
+                    label="Back to List" 
+                    onclick={handleGoBack}>
+                </lightning-button>
+                <lightning-button 
+                    label="Save Favorite" 
+                    variant="brand"
+                    onclick={handleFavorite}>
+                </lightning-button>
+            </div>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="slds-p-around_medium">
+            <p class="slds-text-color_weak">Select a repository to see details.</p>
+        </div>
+    </template>
+</template>
